@@ -1,0 +1,44 @@
+<h1 class="text-center my-4">List of Residences</h1>
+
+<input [(ngModel)]="searchItem"   placeholder="Rechercher par adresse"class="form-control"
+style="margin-bottom: 1rem;">
+
+<div class="container">
+
+ <div class="row">
+
+  <div class="col-md-4 mb-4" *ngFor="let residence of filteredResidences" >
+
+   <!-- <ng-container *ngIf="searchItem || searchItem === 'residence.adress'" class="card h-100"> -->
+
+    <img [src]="residence.image" class="card-img-top img-fluid" alt="{{residence.name}} image" style="height: 200px; object-fit: cover;">
+
+    <div class="card-body">
+
+     <h5 class="card-title">{{ residence.name }}</h5>
+
+     <p class="card-text"><small class="text-muted">Status: {{ residence.status }}</small></p>
+
+  
+
+     <div> <button (click)="showLocation(residence)" class="btn btn-primary">Show Location</button>
+     </div>
+      <span *ngIf="visiblity && selectedResidence?.id === residence.id&& !alert"> {{residence.address}}</span> 
+      <div *ngIf="alert && selectedResidence?.id === residence.id" class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">Location!</h4>
+        <p>Aww nooo, unknown location.</p>
+        
+      </div>
+    
+
+    </div>
+
+   <!-- </ng-container> -->
+
+
+
+  </div>
+
+ </div>
+
+</div>
